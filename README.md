@@ -21,5 +21,15 @@ javac -h . Examplo.java
 g++ -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/linux" -shared -fPIC -o libminhabiblioteca.so main.cpp
 work_path=$(pwd)
 java -Djava.library.path=$work_path Examplo
+```
 
+#### All together
+```sh
+cd Cooperative/rust-lib
+cargo build --release --lib
+cd ../..
+work_path=$(pwd)
+javac -d bin Cooperative/*.java
+echo $work_path
+java -cp bin -Djava.library.path=$work_path/Cooperative/rust-lib/target/release Cooperative.Main
 ```
