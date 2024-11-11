@@ -19,6 +19,7 @@ def consumidor(fila, name):
         print(f"Consumido {name}: {mensagem} -> {name}'s bag {len(lista)}")
         print(lista)
         fila.task_done()
+    
 fila = queue.Queue()
 produtor_thread = threading.Thread(target=produtor, args=(fila,))
 consumidor_thread1 = threading.Thread(target=consumidor, args=(fila,'Bob',))
